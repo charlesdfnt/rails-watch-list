@@ -1,0 +1,26 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <h1 class="mb-3 text-center">All my <%= @list.name %> movies!</h1>
+      <p class="lead text-center text-muted mb-5">
+        Only la crème de la crème 🍨
+      </p>
+
+      <ul class="list-group mb-4">
+        <% @list.movies.each do |movie| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= movie.title %>
+            <%= link_to "Delete", bookmark_path(@list, @bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-sm btn-outline-danger" %>
+          </li>
+        <% end %>
+      </ul>
+
+      <div class="text-center">
+        <%= link_to "➕ Add a movie", new_list_bookmark_path(@list), class: "btn btn-success" %>
+        <%= link_to "← Back to all lists", lists_path, class: "btn btn-outline-secondary" %>
+      </div>
+
+    </div>
+  </div>
+</div>

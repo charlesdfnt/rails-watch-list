@@ -1,0 +1,29 @@
+<nav class="navbar navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="<%= lists_path %>">
+      <i class="bi bi-card-checklist me-2"></i> <!-- Bootstrap Icons -->
+      My Movie Lists
+    </a>
+  </div>
+</nav>
+
+<div class="container py-5">
+  <div class="row mb-4 text-center">
+    <h1 class="fw-bold">Your Lists</h1>
+    <p class="text-muted">Explore or create your personalized movie collections.</p>
+  </div>
+
+  <div class="row justify-content-center g-4">
+    <% @lists.each do |list| %>
+      <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+        <%= link_to list.name, list_path(list), class: "btn btn-outline-primary w-100 py-3 fw-semibold" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+      <%= link_to "➕ Create a New List", new_list_path(@list), class: "btn btn-success w-100 py-3 fw-semibold" %>
+    </div>
+  </div>
+</div>
